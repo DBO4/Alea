@@ -1,0 +1,145 @@
+[
+  {
+    "naslov": "Knjiga 1",
+    "opis": "Opis knjige 1",
+    "datumIzdavanja": "2022-01-01",
+    "naslovna": "0x0123456789ABCDEF",
+    "vrsta": true,
+    "likovi": "Lik 1, Lik 2"
+  },
+  {
+    "naslov": "Knjiga 2",
+    "opis": "Opis knjige 2",
+    "datumIzdavanja": "2022-02-01",
+    "naslovna": "0xFEDCBA9876543210",
+    "vrsta": false,
+    "likovi": "Lik 3, Lik 4"
+  },
+  {
+    "naslov": "Knjiga 3",
+    "opis": "Opis knjige 3",
+    "datumIzdavanja": "2022-03-01",
+    "naslovna": "0x0011223344556677",
+    "vrsta": true,
+    "likovi": "Lik 5, Lik 6"
+  },
+  {
+    "naslov": "Knjiga 4",
+    "opis": "Opis knjige 4",
+    "datumIzdavanja": "2022-04-01",
+    "naslovna": "0x8899AABBCCDDEEFF",
+    "vrsta": false,
+    "likovi": "Lik 7, Lik 8"
+  },
+  {
+    "naslov": "Knjiga 5",
+    "opis": "Opis knjige 5",
+    "datumIzdavanja": "2022-05-01",
+    "naslovna": "0x1029384756AFCBED",
+    "vrsta": true,
+    "likovi": "Lik 9, Lik 10"
+  },
+  {
+    "naslov": "Knjiga 6",
+    "opis": "Opis knjige 6",
+    "datumIzdavanja": "2022-06-01",
+    "naslovna": "0xEBA9876543210987",
+    "vrsta": false,
+    "likovi": "Lik 11, Lik 12"
+  },
+  {
+    "naslov": "Knjiga 7",
+    "opis": "Opis knjige 7",
+    "datumIzdavanja": "2022-07-01",
+    "naslovna": "0x76543210FEDCBA98",
+    "vrsta": true,
+    "likovi": "Lik 13, Lik 14"
+  },
+  {
+    "naslov": "Knjiga 8",
+    "opis": "Opis knjige 8",
+    "datumIzdavanja": "2022-08-01",
+    "naslovna": "0x4938271ABCDEF560",
+    "vrsta": false,
+    "likovi": "Lik 15, Lik 16"
+  },
+  {
+    "naslov": "Knjiga 9",
+    "opis": "Opis knjige 9",
+    "datumIzdavanja": "2022-09-01",
+    "naslovna": "0x74659182736ABCDA",
+    "vrsta": true,
+    "likovi": "Lik 17, Lik 18"
+  },
+  {
+    "naslov": "Knjiga 10",
+    "opis": "Opis knjige 10",
+    "datumIzdavanja": "2022-10-01",
+    "naslovna": "0x82BCEDF0934AFBE8",
+    "vrsta": false,
+    "likovi": "Lik 19, Lik 20"
+  },
+  {
+    "naslov": "Knjiga 11",
+    "opis": "Opis knjige 11",
+    "datumIzdavanja": "2022-11-01",
+    "naslovna": "0x0001112223334445",
+    "vrsta": true,
+    "likovi": "Lik 21, Lik 22"
+  },
+  {
+    "naslov": "Knjiga 12",
+    "opis": "Opis knjige 12",
+    "datumIzdavanja": "2022-12-01",
+    "naslovna": "0x5566778899AABBCD",
+    "vrsta": false,
+    "likovi": "Lik 23, Lik 24"
+  },
+  {
+    "naslov": "Knjiga 13",
+    "opis": "Opis knjige 13",
+    "datumIzdavanja": "2023-01-01",
+    "naslovna": "0xFEDCBA9876543210",
+    "vrsta": true,
+    "likovi": "Lik 25, Lik 26"
+  },
+  {
+    "naslov": "Knjiga 14",
+    "opis": "Opis knjige 14",
+    "datumIzdavanja": "2023-02-01",
+    "naslovna": "0x0011223344556677",
+    "vrsta": false,
+    "likovi": "Lik 27, Lik 28"
+  },
+  {
+    "naslov": "Knjiga 15",
+    "opis": "Opis knjige 15",
+    "datumIzdavanja": "2023-03-01",
+    "naslovna": "0x8899AABBCCDDEEFF",
+    "vrsta": true,
+    "likovi": "Lik 29, Lik 30"
+  },
+  {
+    "naslov": "Knjiga 16",
+    "opis": "Opis knjige 16",
+    "datumIzdavanja": "2023-04-01",
+    "naslovna": "0x1029384756AFCBED",
+    "vrsta": false,
+    "likovi": "Lik 31, Lik 32"
+  },
+  {
+    "naslov": "Knjiga 17",
+    "opis": "Opis knjige 17",
+    "datumIzdavanja": "2023-05-01",
+    "naslovna": "0xEBA9876543210987",
+    "vrsta": true,
+    "likovi": "Lik 33, Lik 34"
+  },
+  {
+    "naslov": "Knjiga 18",
+    "opis": "Opis knjige 18",
+    "datumIzdavanja": "2023-06-01",
+    "naslovna": "0x76543210FEDCBA98",
+    "vrsta": false,
+    "likovi": "Lik 35, Lik 36"
+  }]

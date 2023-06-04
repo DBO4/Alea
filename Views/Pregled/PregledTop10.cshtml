@@ -1,0 +1,179 @@
+﻿@model List<ModeliMV.IscitajKnjige>
+    
+
+<form id="searchForm">
+  <input type="text" id="searchInput" placeholder="Unesite naziv knjige">
+
+  <button type="submit">Pretraži</button>
+</form>
+
+<ul id="bookList"></ul>
+<form id="myForm" data-url="/Pregled/PregledTop10">
+  <div style="display: flex;">
+        <label>Stripovi</label>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="toggleSwitch" name="toggleSwitch">
+    </div>
+    
+    <label>Knjige</label>
+  </div>
+</form>
+<div style="display: flex;">
+    <div>
+        <h1>Top 10</h1>
+        <ul id="listaKnjiga">
+    
+            @foreach (var book in Model)
+            {
+                <li>@book.naslov</li>
+                <img src="data:image/jpeg;base64,@(Convert.ToBase64String(book.naslovna))" height="100px" alt="Slika">
+                <button class="btnOcjena">Prikaži ocjenu</button>
+                <li class="ocjena" hidden>(Rating: @book.prosjekOcjene)</li>
+            }
+
+        
+        </ul>
+    </div>
+    <div>
+        <h3>Rezultati pretrage</h3>
+        <ul id="listaKnjigaSrc">
+
+            @foreach (var book in Model)
+            {
+                <li>@book.naslov</li>
+                <img src="data:image/jpeg;base64,@(Convert.ToBase64String(book.naslovna))" height="100px" alt="Slika">
+                <button class="btnOcjena">Prikaži ocjenu</button>
+                <li class="ocjena" hidden>(Rating: @book.prosjekOcjene)</li>
+            }
+
+        </ul>
+        <a href ="/Pregled/PregledKnjiga" id="linkText">Pogledaj više</a>
+    </div>
+</div>
+<script>
+    var form = document.getElementById("myForm");
+    var toggleSwitch = document.getElementById("toggleSwitch");
+    var bookListElement = document.getElementById('listaKnjiga');
+    var bookListElementSrc = document.getElementById('listaKnjigaSrc');
+    var pretraga = document.getElementById("searchInput");
+    var searchTerm = pretraga.value;
+    var searchForm = document.getElementById('searchForm');
+    var linkText = document.getElementById('linkText');
+    var btnOcjenaElements = document.querySelectorAll('.btnOcjena');
+    var buttons = document.getElementsByClassName('btnOcjena');
+
+    toggleSwitch.addEventListener("change", function () {
+        var isChecked = toggleSwitch.checked;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Pregled/PregledTop10Json?toggle=' + isChecked, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var newData = JSON.parse(xhr.responseText);
+                bookListElement.innerHTML = '';
+                for (var i = 0; i < newData.length; i++) {
+                    var book = newData[i];
+                    var listItemElement = document.createElement('li');
+
+                    // Create an image element
+                    var imageElement = document.createElement('img');
+                    imageElement.src = 'data:image/jpeg;base64,' + book.naslovna;
+                    imageElement.alt = 'Slika';
+                    imageElement.height = 100;
+                    listItemElement.appendChild(imageElement);
+
+                    // Create a span element for book title and rating
+                     var spanElement = document.createElement('span');
+                    spanElement.textContent = book.naslov + ' (Rating: ';
+                    listItemElement.appendChild(spanElement); // Add the span to the list item
+
+                    // Create a button element for displaying rating
+                    var buttonElement = document.createElement('button');
+                    buttonElement.classList.add('btnOcjena');
+                    buttonElement.textContent = 'Prikaži ocjenu';
+                    listItemElement.appendChild(buttonElement);
+
+                    var ratingElement = document.createElement('span');
+                    ratingElement.classList.add('ocjena');
+                    ratingElement.textContent = book.prosjekOcjene;
+                    ratingElement.hidden = true;
+                    listItemElement.appendChild(ratingElement);
+
+
+
+
+                    bookListElement.appendChild(listItemElement);
+                }
+                
+                for (var j = 0; j < buttons.length; j++) {
+                  buttons[j].addEventListener('click', function () {
+                    var ratingElement = this.nextElementSibling;
+                    ratingElement.hidden = !ratingElement.hidden;
+                  });
+                }
+            }
+        };
+        xhr.send();
+    });
+
+    searchForm.addEventListener('submit', function (event) {
+        
+        event.preventDefault(); 
+        if (pretraga.value.length < 3) {
+            alert('Unesite najmanje 3 karaktera za pretragu.');
+            return;
+        }
+
+         var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/Pregled/PretraziKnjige?termin=' + pretraga.value, true);
+         xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              var searchData = JSON.parse(xhr.responseText);
+                bookListElementSrc.innerHTML = ''; // Clear the book list
+                console.log(xhr.responseText);
+                for (var i = 0; i < searchData.length; i++) {
+                    var book = searchData[i];
+                    var listItemElement = document.createElement('li');
+                    
+                    var imageElement = document.createElement('img');
+                    imageElement.src = 'data:image/jpeg;base64,' + book.naslovna;
+                    imageElement.alt = 'Slika';
+                    imageElement.height = 100;
+                    listItemElement.appendChild(imageElement);
+
+
+                    // Create an image element
+                    var spanElement = document.createElement('span');
+                    spanElement.textContent = book.naslov + ' (Rating: ';
+                    listItemElement.appendChild(spanElement); // Add the span to the list item
+
+                    // Create a button element for displaying rating
+                    var buttonElement = document.createElement('button');
+                    buttonElement.classList.add('btnOcjena');
+                    buttonElement.textContent = 'Prikaži ocjenu';
+                    listItemElement.appendChild(buttonElement);
+
+                    var ratingElement = document.createElement('span');
+                    ratingElement.classList.add('ocjena');
+                    ratingElement.textContent = book.prosjekOcjene;
+                    ratingElement.hidden = true;
+                    listItemElement.appendChild(ratingElement);
+
+                    bookListElementSrc.appendChild(listItemElement);
+                }
+
+                for (var j = 0; j < buttons.length; j++) {
+                    buttons[j].addEventListener('click', function () {
+                        var ratingElement = this.nextElementSibling;
+                        ratingElement.hidden = !ratingElement.hidden;
+                    });
+                }
+            }
+          };
+          xhr.send();
+        });
+
+
+
+
+
+</script>

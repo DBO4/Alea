@@ -1,0 +1,18 @@
+﻿.button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+    .button:hover {
+        background-color: #45a049;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    }

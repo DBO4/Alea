@@ -1,0 +1,58 @@
+﻿@model List<Knjige>
+
+@{
+    ViewData["Title"] = "Sve Knjige";
+}
+
+
+<h1>Sve Knjige</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naslov</th>
+            <th>Naslovna</th>
+            <th>Opis</th>
+            <th>Likovi</th>
+            <th>Datum izdvanja</th>
+            <th>"Zvjezdice"</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var book in Model)
+        {
+            <form method="post" id="form_@book.idKnjige" action="UnesiOcjenu">
+                <input type="hidden" name="idKnjige" value="@book.idKnjige" />
+            <tr>
+                <td hidden>@book.idKnjige</td>
+                <td>@book.naslov</td>
+                <td><img src="data:image/jpeg;base64,@(Convert.ToBase64String(book.naslovna))" height="100px" alt="Slika"></td>
+                <td width="250">@book.opis</td>
+                <td width="150">@book.likovi</td>
+                <td>@book.datumIzdavanja</td>
+                <td>
+                    <div class="star-rating" data-item-id="@book.idKnjige">
+                        <input type="radio" id="star1_@book.idKnjige" name="selectedRating" value="1" />
+                        <label for="star1_@book.idKnjige" title="1 star"></label>
+                        <input type="radio" id="star2_@book.idKnjige" name="selectedRating" value="2" />
+                        <label for="star2_@book.idKnjige" title="2 stars"></label>
+                        <input type="radio" id="star3_@book.idKnjige" name="selectedRating" value="3" />
+                        <label for="star3_@book.idKnjige" title="3 stars"></label>
+                        <input type="radio" id="star4_@book.idKnjige" name="selectedRating" value="4" />
+                        <label for="star4_@book.idKnjige" title="4 stars"></label>
+                        <input type="radio" id="star5_@book.idKnjige" name="selectedRating" value="5" />
+                        <label for="star5_@book.idKnjige" title="5 stars"></label>
+
+                    </div>
+                </td>
+                <td> <button type="submit">Ocjeni</button></td>
+            </tr>
+            </form>
+        }
+
+
+       
+
+    </tbody>
+</table>

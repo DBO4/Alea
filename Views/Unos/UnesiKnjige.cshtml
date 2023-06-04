@@ -1,0 +1,50 @@
+﻿@model Knjige
+
+<form method="post" action="UnesiKnjige" enctype="multipart/form-data">
+    <h1>Dodaj knjigu</h1>
+    <div class="mb-3">
+        <label for="" class="form-label">Naslov</label>
+        <input type="text" class="form-control" asp-for="naslov">
+    </div>
+    <div class="mb-3">
+        <label for="opis" class="form-label">Opis</label>
+        <input type="text" id="opis" class="form-control" asp-for="opis">
+    </div>
+    <div class="mb-3">
+        <label for="slika" class="form-label">Odaberi sliku:</label>
+        <input type="file" id="slika" name="slika" accept="image/*" asp-for="naslovna" required />
+    </div>
+    <div class="mb-3">
+        <label for="datum" class="form-label">Datum izdavanja:</label>
+        <input type="date" id="datumIzdavanja" name="datumIzdavanja" asp-for="datumIzdavanja" />
+    </div>
+    <div>
+        <label>
+            <input type="checkbox" name="vrsta" id="vrsta" value="knjiga" checked asp-for="vrsta" /> Knjiga/Strip
+        </label>
+    </div>
+    
+        <div class="mb-3">
+        <label for="likovi1" class="form-label">likovi</label>
+        <input type="text" id="likovi1" class="form-control">
+        <button type="button" onclick="prebaciTekst()">Dodaj</button>
+        <input type="text" id="likovi2" name="likovi" class="form-control" readonly asp-for="likovi">
+        <button type="button" onclick="obrisi()">Obriši</button>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sačuvaj</button>
+</form>
+
+<script>
+    function prebaciTekst() {
+        var iz = document.getElementById("likovi1");
+        var u = document.getElementById("likovi2");
+
+        u.value = u.value + iz.value + ";";
+        iz.value = "";
+    }
+    function obrisi(){
+        var u = document.getElementById("likovi2");
+        u.value = "";
+    }
+</script>
